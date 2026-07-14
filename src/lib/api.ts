@@ -6,6 +6,62 @@ type ApiOptions = {
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
+const normalizeApiBaseUrl = (baseUrl: string) => {
+  return baseUrl.replace(/\/+$/, "");
+};
+
+const buildApiUrl = (path: string) => {
+  if (/^https?:\/\//i.test(path)) {
+    return path;
+  }
+
+  const baseUrl = normalizeApiBaseUrl(API_BASE_URL);
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  let normalizedBasePath = "";
+
+  try {
+    normalizedBasePath = new URL(baseUrl).pathname.replace(/\/+$/, "");
+  } catch {
+    normalizedBasePath = baseUrl
+      .replace(/^https?:\/\/[^/]+/i, "")
+      .replace(/\/+$/, "");
+  }
+
+  // Prevent accidental /api/api/... calls when env already ends with /api.
+  if (normalizedBasePath === "/api" && normalizedPath.startsWith("/api/")) {
+    return `${baseUrl}${normalizedPath.slice(4)}`;
+  }
+
+  if (normalizedBasePath === "/api" && normalizedPath === "/api") {
+    return baseUrl;
+  }
+
+  return `${baseUrl}${normalizedPath}`;
+};
+
+const normalizeMongoIds = <T>(value: T): T => {
+  if (Array.isArray(value)) {
+    return value.map((item) => normalizeMongoIds(item)) as T;
+  }
+
+  if (value && typeof value === "object") {
+    const source = value as Record<string, unknown>;
+    const normalized: Record<string, unknown> = {};
+
+    for (const [key, item] of Object.entries(source)) {
+      normalized[key] = normalizeMongoIds(item);
+    }
+
+    if (source._id != null && normalized.id == null) {
+      normalized.id = String(source._id);
+    }
+
+    return normalized as T;
+  }
+
+  return value;
+};
+
 const getAuthToken = () => {
   if (typeof window === "undefined") {
     return null;
@@ -40,7 +96,7 @@ export const apiRequest = async <T>(
         : JSON.stringify(options.body);
 
   try {
-    const response = await fetch(`${API_BASE_URL}${path}`, {
+    const response = await fetch(buildApiUrl(path), {
       method: options.method || "GET",
       headers,
       body: requestBody,
@@ -49,21 +105,28 @@ export const apiRequest = async <T>(
     const data = await response.json().catch(() => ({}));
 
     if (!response.ok) {
+      const message =
+        data && typeof data.message === "string" ? data.message : "";
+
       if (response.status === 403) {
         throw new Error(
-          "Access Denied: Admin access required or your account does not have permission",
+          message ||
+            "Access Denied: Admin access required or your account does not have permission",
         );
       } else if (response.status === 401) {
-        throw new Error("Unauthorized: Please login again");
+        throw new Error(message || "Unauthorized: Please login again");
       } else if (response.status === 404) {
-        throw new Error("Not Found: The requested resource was not found");
+        throw new Error(
+          message ||
+            `Not Found: The requested resource was not found at ${path}`,
+        );
       }
       throw new Error(
-        data.message || `Request failed with status ${response.status}`,
+        message || `Request failed with status ${response.status}`,
       );
     }
 
-    return data as T;
+    return normalizeMongoIds(data) as T;
   } catch (error) {
     if (
       error instanceof TypeError &&

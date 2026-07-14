@@ -23,6 +23,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
+const LOGO_SRC = "/Logo.png";
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -194,9 +196,9 @@ export function Navbar() {
                 >
                   <div className="relative">
                     <img
-                      src={LOGO_SRC}
-                      alt="EventSphere profile"
-                      className="h-10 w-10 rounded-full bg-white object-contain p-1 border border-slate-700"
+                      src={user.photoUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name || "User")}&background=random`}
+                      alt={`${user.name || "User"} profile`}
+                      className="h-10 w-10 rounded-full bg-white object-cover p-0.5 border-2 border-slate-700"
                     />
                     <span className="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-[#0F172A]" />
                   </div>
@@ -210,9 +212,9 @@ export function Navbar() {
                   <div className="absolute right-0 mt-3 w-64 bg-[#0F172A] rounded-2xl shadow-xl shadow-slate-900/20 border border-slate-800 overflow-hidden py-2 transform opacity-100 scale-100 transition-all origin-top-right">
                     <div className="px-4 py-3 border-b border-slate-800/80 flex items-center gap-3">
                       <img
-                        src={LOGO_SRC}
-                        alt="EventSphere profile"
-                        className="h-10 w-10 rounded-full bg-white object-contain p-1 border border-slate-700"
+                        src={user.photoUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name || "User")}&background=random`}
+                        alt={`${user.name || "User"} profile`}
+                        className="h-10 w-10 rounded-full bg-white object-cover p-0.5 border-2 border-slate-700 shrink-0"
                       />
                       <div className="min-w-0">
                         <p className="text-sm font-semibold text-white truncate">
