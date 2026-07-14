@@ -16,8 +16,8 @@ export function BookingCard({ booking, onCancel, isCancelling }: BookingCardProp
   const isCancelled = booking.status === "cancelled";
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col md:flex-row group hover:shadow-md transition-all">
-      <div className="h-48 md:h-auto md:w-64 shrink-0 relative bg-gray-100">
+    <div className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden flex flex-col md:flex-row group hover:shadow-md transition-all">
+      <div className="h-48 md:h-auto md:w-64 shrink-0 relative bg-muted">
         <img 
           src={booking.event.imageUrl} 
           alt={booking.event.title} 
@@ -33,7 +33,7 @@ export function BookingCard({ booking, onCancel, isCancelling }: BookingCardProp
       <div className="p-5 flex-1 flex flex-col">
         <div className="flex justify-between items-start gap-4 mb-2">
           <Link href={`/events/${booking.event.id || booking.event._id}`} className="hover:text-primary transition-colors">
-            <h3 className={`font-bold font-heading text-lg ${isCancelled ? "text-gray-500 line-through" : "text-gray-900"}`}>
+            <h3 className={`font-bold font-heading text-lg ${isCancelled ? "text-muted-foreground line-through" : "text-foreground"}`}>
               {booking.event.title}
             </h3>
           </Link>
@@ -43,27 +43,27 @@ export function BookingCard({ booking, onCancel, isCancelling }: BookingCardProp
         </div>
 
         <div className="space-y-2 mb-4">
-          <div className="flex items-center gap-2 text-sm text-gray-500">
-            <Calendar className="h-4 w-4 text-gray-400" />
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Calendar className="h-4 w-4 text-muted-foreground" />
             <span>{booking.event.date} • {booking.event.time}</span>
           </div>
-          <div className="flex items-center gap-2 text-sm text-gray-500">
-            <MapPin className="h-4 w-4 text-gray-400" />
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <MapPin className="h-4 w-4 text-muted-foreground" />
             <span className="truncate">{booking.event.venue}, {booking.event.location}</span>
           </div>
         </div>
 
-        <div className="mt-auto pt-4 border-t border-gray-50 flex flex-wrap items-center justify-between gap-4">
+        <div className="mt-auto pt-4 border-t border-border flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <div>
-              <p className="text-xs text-gray-400 font-medium uppercase mb-0.5">Tickets</p>
-              <div className="flex items-center gap-1.5 font-semibold text-gray-900">
+              <p className="text-xs text-muted-foreground font-medium uppercase mb-0.5">Tickets</p>
+              <div className="flex items-center gap-1.5 font-semibold text-foreground">
                 <Ticket className="h-4 w-4 text-primary" /> {booking.quantity}
               </div>
             </div>
             <div>
-              <p className="text-xs text-gray-400 font-medium uppercase mb-0.5">Total Paid</p>
-              <div className="font-semibold text-gray-900">
+              <p className="text-xs text-muted-foreground font-medium uppercase mb-0.5">Total Paid</p>
+              <div className="font-semibold text-foreground">
                 ${booking.totalPrice}
               </div>
             </div>

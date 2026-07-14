@@ -65,12 +65,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-white">
+    <div className="min-h-screen flex flex-col md:flex-row bg-card">
       {/* Left Column - Form */}
       <div className="w-full md:w-1/2 lg:w-[40%] flex flex-col justify-center p-8 sm:p-12 lg:p-16 xl:p-24 relative z-10">
         <Link
           href="/"
-          className="absolute top-8 left-8 sm:left-12 flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
+          className="absolute top-8 left-8 sm:left-12 flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
         </Link>
@@ -85,10 +85,10 @@ export default function LoginPage() {
                 EventSphere
               </span>
             </Link>
-            <h1 className="text-3xl font-bold font-heading tracking-tight text-gray-900">
+            <h1 className="text-3xl font-bold font-heading tracking-tight text-foreground">
               Welcome back
             </h1>
-            <p className="text-gray-500">
+            <p className="text-muted-foreground">
               Enter your details to access your account.
             </p>
           </div>
@@ -102,13 +102,13 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-2">
               <label
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-foreground"
                 htmlFor="email"
               >
                 Email
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   id="email"
                   name="email"
@@ -125,7 +125,7 @@ export default function LoginPage() {
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <label
-                  className="text-sm font-medium text-gray-700"
+                  className="text-sm font-medium text-foreground"
                   htmlFor="password"
                 >
                   Password
@@ -138,7 +138,7 @@ export default function LoginPage() {
                 </Link>
               </div>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   id="password"
                   name="password"
@@ -152,7 +152,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
                 >
                   {showPassword ? (
                     <EyeOff className="h-5 w-5" />
@@ -171,7 +171,7 @@ export default function LoginPage() {
               />
               <label
                 htmlFor="remember"
-                className="ml-2 block text-sm text-gray-700"
+                className="ml-2 block text-sm text-foreground"
               >
                 Remember me for 30 days
               </label>
@@ -188,10 +188,10 @@ export default function LoginPage() {
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200"></div>
+              <div className="w-full border-t border-border"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-gray-500">
+              <span className="bg-card px-2 text-muted-foreground">
                 Or continue with
               </span>
             </div>
@@ -229,7 +229,7 @@ export default function LoginPage() {
             </Button>
           </div>
 
-          <p className="text-center text-sm text-gray-500 mt-8">
+          <p className="text-center text-sm text-muted-foreground mt-8">
             Don't have an account?{" "}
             <Link
               href="/register"

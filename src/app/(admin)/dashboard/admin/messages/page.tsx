@@ -77,10 +77,10 @@ export default function AdminMessagesPage() {
         <p className="text-xs text-slate-400 font-semibold mt-1">Manage, read, and reply to user queries and help requests.</p>
       </div>
 
-      <div className="flex-1 bg-white rounded-3xl shadow-sm border border-slate-100 flex overflow-hidden min-h-0">
+      <div className="flex-1 bg-card rounded-3xl shadow-sm border border-slate-100 flex overflow-hidden min-h-0">
         {/* Inbox List */}
         <div className="w-full md:w-5/12 lg:w-4/12 border-r border-slate-100 flex flex-col bg-slate-50/30">
-          <div className="p-4 border-b border-slate-100 bg-white">
+          <div className="p-4 border-b border-slate-100 bg-card">
             <h2 className="text-xs font-black uppercase text-slate-800 tracking-wider">
               Inbox ({messages.filter(m => !m.isRead).length} unread)
             </h2>
@@ -131,7 +131,7 @@ export default function AdminMessagesPage() {
         </div>
 
         {/* Message Detail View */}
-        <div className="hidden md:flex md:w-7/12 lg:w-8/12 flex-col bg-white">
+        <div className="hidden md:flex md:w-7/12 lg:w-8/12 flex-col bg-card">
           {selectedMessage ? (
             <div className="flex-1 flex flex-col min-h-0 animate-in fade-in slide-in-from-right-4 duration-300">
               <div className="p-6 border-b border-slate-100 flex justify-between items-start gap-4">

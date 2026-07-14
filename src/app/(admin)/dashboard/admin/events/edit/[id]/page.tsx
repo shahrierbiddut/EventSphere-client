@@ -115,12 +115,12 @@ export default function AdminEditEventPage({ params }: { params: Promise<{ id: s
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="flex items-center gap-4">
-        <Link href="/dashboard/admin/events" className="p-2 bg-white rounded-xl border border-gray-200 text-gray-500 hover:text-indigo-600 transition-colors">
+        <Link href="/dashboard/admin/events" className="p-2 bg-card rounded-xl border border-border text-muted-foreground hover:text-indigo-600 transition-colors">
           <ArrowLeft size={20} />
         </Link>
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Edit Event</h1>
-          <p className="text-sm text-gray-500 mt-1">Update details for this event.</p>
+          <h1 className="text-2xl font-bold text-foreground">Edit Event</h1>
+          <p className="text-sm text-muted-foreground mt-1">Update details for this event.</p>
         </div>
       </div>
 
@@ -132,39 +132,39 @@ export default function AdminEditEventPage({ params }: { params: Promise<{ id: s
         )}
 
         {/* Section 1: Basic Info */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
-          <h2 className="text-lg font-bold text-gray-900 border-b border-gray-100 pb-2">Basic Information</h2>
+        <div className="bg-card p-6 rounded-2xl shadow-sm border border-border space-y-4">
+          <h2 className="text-lg font-bold text-foreground border-b border-border pb-2">Basic Information</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-gray-700">Event Title <span className="text-rose-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">Event Title <span className="text-rose-500">*</span></label>
               <input
                 type="text"
                 name="title"
                 required
                 value={formData.title}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
+                className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-gray-700">Slug (URL) <span className="text-rose-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">Slug (URL) <span className="text-rose-500">*</span></label>
               <input
                 type="text"
                 name="slug"
                 required
                 value={formData.slug}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm bg-gray-50"
+                className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm bg-muted"
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-gray-700">Category <span className="text-rose-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">Category <span className="text-rose-500">*</span></label>
               <select
                 name="category"
                 required
                 value={formData.category}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm bg-white"
+                className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm bg-card"
               >
                 <option value="music">Music</option>
                 <option value="technology">Technology</option>
@@ -175,87 +175,87 @@ export default function AdminEditEventPage({ params }: { params: Promise<{ id: s
               </select>
             </div>
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-gray-700">Cover Image URL <span className="text-rose-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">Cover Image URL <span className="text-rose-500">*</span></label>
               <input
                 type="url"
                 name="imageUrl"
                 required
                 value={formData.imageUrl}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
+                className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
               />
             </div>
           </div>
           <div className="space-y-1.5">
-            <label className="text-sm font-medium text-gray-700">Short Description <span className="text-rose-500">*</span></label>
+            <label className="text-sm font-medium text-foreground">Short Description <span className="text-rose-500">*</span></label>
             <textarea
               name="shortDescription"
               required
               rows={2}
               value={formData.shortDescription}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
+              className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
             />
           </div>
         </div>
 
         {/* Section 2: Date & Location */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
-          <h2 className="text-lg font-bold text-gray-900 border-b border-gray-100 pb-2">Date & Location</h2>
+        <div className="bg-card p-6 rounded-2xl shadow-sm border border-border space-y-4">
+          <h2 className="text-lg font-bold text-foreground border-b border-border pb-2">Date & Location</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-gray-700">Date <span className="text-rose-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">Date <span className="text-rose-500">*</span></label>
               <input
                 type="date"
                 name="date"
                 required
                 value={formData.date}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
+                className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-gray-700">Time <span className="text-rose-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">Time <span className="text-rose-500">*</span></label>
               <input
                 type="time"
                 name="time"
                 required
                 value={formData.time}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
+                className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-gray-700">City / Location <span className="text-rose-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">City / Location <span className="text-rose-500">*</span></label>
               <input
                 type="text"
                 name="location"
                 required
                 value={formData.location}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
+                className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-gray-700">Venue Name <span className="text-rose-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">Venue Name <span className="text-rose-500">*</span></label>
               <input
                 type="text"
                 name="venue"
                 required
                 value={formData.venue}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
+                className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
               />
             </div>
           </div>
         </div>
 
         {/* Section 3: Tickets & Capacity */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
-          <h2 className="text-lg font-bold text-gray-900 border-b border-gray-100 pb-2">Tickets & Capacity</h2>
+        <div className="bg-card p-6 rounded-2xl shadow-sm border border-border space-y-4">
+          <h2 className="text-lg font-bold text-foreground border-b border-border pb-2">Tickets & Capacity</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="flex items-center justify-between text-sm font-medium text-gray-700">
+              <label className="flex items-center justify-between text-sm font-medium text-foreground">
                 Ticket Price ($)
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
@@ -265,7 +265,7 @@ export default function AdminEditEventPage({ params }: { params: Promise<{ id: s
                     onChange={handleChange}
                     className="w-4 h-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500"
                   />
-                  <span className="text-xs font-normal text-gray-500">Is Free?</span>
+                  <span className="text-xs font-normal text-muted-foreground">Is Free?</span>
                 </label>
               </label>
               <input
@@ -276,11 +276,11 @@ export default function AdminEditEventPage({ params }: { params: Promise<{ id: s
                 disabled={formData.isFree}
                 value={formData.isFree ? 0 : formData.price}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm disabled:bg-gray-50 disabled:text-gray-400"
+                className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm disabled:bg-muted disabled:text-muted-foreground"
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-gray-700">Total Seats Capacity <span className="text-rose-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">Total Seats Capacity <span className="text-rose-500">*</span></label>
               <input
                 type="number"
                 name="totalSeats"
@@ -288,11 +288,11 @@ export default function AdminEditEventPage({ params }: { params: Promise<{ id: s
                 required
                 value={formData.totalSeats}
                 onChange={(e) => setFormData(prev => ({ ...prev, totalSeats: Number(e.target.value) }))}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
+                className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-gray-700">Available Seats <span className="text-rose-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">Available Seats <span className="text-rose-500">*</span></label>
               <input
                 type="number"
                 name="availableSeats"
@@ -301,15 +301,15 @@ export default function AdminEditEventPage({ params }: { params: Promise<{ id: s
                 required
                 value={formData.availableSeats}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
+                className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
               />
             </div>
           </div>
         </div>
 
         {/* Section 4: Details & Organizer */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
-          <h2 className="text-lg font-bold text-gray-900 border-b border-gray-100 pb-2">Full Description</h2>
+        <div className="bg-card p-6 rounded-2xl shadow-sm border border-border space-y-4">
+          <h2 className="text-lg font-bold text-foreground border-b border-border pb-2">Full Description</h2>
           <div className="space-y-1.5">
             <textarea
               name="description"
@@ -318,39 +318,39 @@ export default function AdminEditEventPage({ params }: { params: Promise<{ id: s
               value={formData.description}
               onChange={handleChange}
               placeholder="Provide a detailed description of the event..."
-              className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
+              className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
             />
           </div>
 
-          <h2 className="text-lg font-bold text-gray-900 border-b border-gray-100 pb-2 mt-6">Organizer Info</h2>
+          <h2 className="text-lg font-bold text-foreground border-b border-border pb-2 mt-6">Organizer Info</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-gray-700">Organizer Name <span className="text-rose-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">Organizer Name <span className="text-rose-500">*</span></label>
               <input
                 type="text"
                 name="organizer.name"
                 required
                 value={formData.organizer.name}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
+                className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-sm font-medium text-gray-700">Contact Email <span className="text-rose-500">*</span></label>
+              <label className="text-sm font-medium text-foreground">Contact Email <span className="text-rose-500">*</span></label>
               <input
                 type="email"
                 name="organizer.contactEmail"
                 required
                 value={formData.organizer.contactEmail}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
+                className="w-full px-4 py-2 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all text-sm"
               />
             </div>
           </div>
         </div>
 
         {/* Submit */}
-        <div className="flex items-center justify-between p-6 bg-gray-50 rounded-2xl border border-gray-200">
+        <div className="flex items-center justify-between p-6 bg-muted rounded-2xl border border-border">
           <label className="flex items-center gap-3 cursor-pointer">
             <input
               type="checkbox"
@@ -360,8 +360,8 @@ export default function AdminEditEventPage({ params }: { params: Promise<{ id: s
               className="w-5 h-5 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500"
             />
             <div>
-              <p className="text-sm font-bold text-gray-900">Publish Immediately</p>
-              <p className="text-xs text-gray-500">Uncheck to save as draft.</p>
+              <p className="text-sm font-bold text-foreground">Publish Immediately</p>
+              <p className="text-xs text-muted-foreground">Uncheck to save as draft.</p>
             </div>
           </label>
 

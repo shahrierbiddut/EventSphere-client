@@ -10,7 +10,8 @@ import {
   Bell, 
   Settings, 
   LogOut,
-  X
+  X,
+  PlusCircle
 } from "lucide-react";
 import { useAuth } from "@/lib/AuthContext";
 import { UserProfile } from "@/types";
@@ -31,6 +32,7 @@ export function DashboardSidebar({ isOpen, setIsOpen, user }: SidebarProps) {
     { name: "Favorites", href: "/dashboard/favorites", icon: Heart },
     { name: "Profile", href: "/dashboard/profile", icon: UserCircle },
     { name: "Notifications", href: "/dashboard/notifications", icon: Bell },
+    { name: "Create Event", href: "/dashboard/create-event", icon: PlusCircle },
     { name: "Settings", href: "/dashboard/settings", icon: Settings },
   ];
 

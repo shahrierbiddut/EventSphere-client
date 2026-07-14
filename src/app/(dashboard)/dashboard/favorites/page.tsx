@@ -46,13 +46,13 @@ export default function FavoritesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Favorite Events</h1>
-        <p className="text-gray-500 text-sm mt-1">Events you've saved for later.</p>
+        <h1 className="text-2xl font-bold font-heading text-foreground">Favorite Events</h1>
+        <p className="text-muted-foreground text-sm mt-1">Events you've saved for later.</p>
       </div>
 
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[1, 2, 3].map(i => <div key={i} className="h-80 bg-gray-100 rounded-2xl animate-pulse"></div>)}
+          {[1, 2, 3].map(i => <div key={i} className="h-80 bg-muted rounded-2xl animate-pulse"></div>)}
         </div>
       ) : favorites.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -66,12 +66,12 @@ export default function FavoritesPage() {
           ))}
         </div>
       ) : (
-        <div className="bg-white rounded-2xl border border-dashed border-gray-200 p-12 text-center flex flex-col items-center justify-center">
+        <div className="bg-card rounded-2xl border border-dashed border-border p-12 text-center flex flex-col items-center justify-center">
           <div className="w-20 h-20 bg-rose-50 rounded-full flex items-center justify-center mb-4">
             <Heart className="h-10 w-10 text-rose-300 fill-rose-100" />
           </div>
-          <h3 className="text-xl font-bold text-gray-900 mb-2">No favorites yet</h3>
-          <p className="text-gray-500 max-w-sm mb-6">
+          <h3 className="text-xl font-bold text-foreground mb-2">No favorites yet</h3>
+          <p className="text-muted-foreground max-w-sm mb-6">
             You haven't saved any events to your favorites. Browse events and click the heart icon to save them.
           </p>
           <Button asChild>

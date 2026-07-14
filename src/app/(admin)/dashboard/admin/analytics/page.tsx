@@ -35,33 +35,33 @@ export default function AdminAnalyticsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Analytics</h1>
-          <p className="text-sm text-gray-500 mt-1">Detailed metrics and performance data.</p>
+          <h1 className="text-2xl font-bold text-foreground">Analytics</h1>
+          <p className="text-sm text-muted-foreground mt-1">Detailed metrics and performance data.</p>
         </div>
         <div className="flex items-center gap-2">
-          <div className="flex items-center bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+          <div className="flex items-center bg-card border border-border rounded-xl overflow-hidden shadow-sm">
             <button 
               onClick={() => setDateRange("30d")}
-              className={`px-4 py-2 text-sm font-medium transition-colors ${dateRange === "30d" ? "bg-indigo-50 text-indigo-700" : "text-gray-600 hover:bg-gray-50"}`}
+              className={`px-4 py-2 text-sm font-medium transition-colors ${dateRange === "30d" ? "bg-indigo-50 text-indigo-700" : "text-muted-foreground hover:bg-muted"}`}
             >
               30D
             </button>
             <div className="w-px h-4 bg-gray-200" />
             <button 
               onClick={() => setDateRange("6m")}
-              className={`px-4 py-2 text-sm font-medium transition-colors ${dateRange === "6m" ? "bg-indigo-50 text-indigo-700" : "text-gray-600 hover:bg-gray-50"}`}
+              className={`px-4 py-2 text-sm font-medium transition-colors ${dateRange === "6m" ? "bg-indigo-50 text-indigo-700" : "text-muted-foreground hover:bg-muted"}`}
             >
               6M
             </button>
             <div className="w-px h-4 bg-gray-200" />
             <button 
               onClick={() => setDateRange("1y")}
-              className={`px-4 py-2 text-sm font-medium transition-colors ${dateRange === "1y" ? "bg-indigo-50 text-indigo-700" : "text-gray-600 hover:bg-gray-50"}`}
+              className={`px-4 py-2 text-sm font-medium transition-colors ${dateRange === "1y" ? "bg-indigo-50 text-indigo-700" : "text-muted-foreground hover:bg-muted"}`}
             >
               1Y
             </button>
           </div>
-          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-gray-700 text-sm font-medium rounded-xl hover:bg-gray-50 transition-colors shadow-sm">
+          <button className="flex items-center gap-2 px-4 py-2 bg-card border border-border text-foreground text-sm font-medium rounded-xl hover:bg-muted transition-colors shadow-sm">
             <Download size={16} />
             Export
           </button>
@@ -71,17 +71,17 @@ export default function AdminAnalyticsPage() {
       {loading ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm animate-pulse h-80" />
+            <div key={i} className="bg-card rounded-2xl p-6 border border-border shadow-sm animate-pulse h-80" />
           ))}
         </div>
       ) : data ? (
         <>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Revenue & Bookings (Full width on large screens) */}
-            <div className="col-span-1 lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+            <div className="col-span-1 lg:col-span-2 bg-card rounded-2xl border border-border shadow-sm p-6">
               <div className="mb-6">
-                <h2 className="text-base font-bold text-gray-900">Revenue & Bookings Trend</h2>
-                <p className="text-xs text-gray-400 mt-0.5">Monthly performance metrics</p>
+                <h2 className="text-base font-bold text-foreground">Revenue & Bookings Trend</h2>
+                <p className="text-xs text-muted-foreground mt-0.5">Monthly performance metrics</p>
               </div>
               <div className="h-[300px]">
                 <BookingsOverviewChart data={data.bookingsOverview} />
@@ -89,10 +89,10 @@ export default function AdminAnalyticsPage() {
             </div>
 
             {/* User Growth */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+            <div className="bg-card rounded-2xl border border-border shadow-sm p-6">
               <div className="mb-6">
-                <h2 className="text-base font-bold text-gray-900">User Growth</h2>
-                <p className="text-xs text-gray-400 mt-0.5">New user registrations per month</p>
+                <h2 className="text-base font-bold text-foreground">User Growth</h2>
+                <p className="text-xs text-muted-foreground mt-0.5">New user registrations per month</p>
               </div>
               <div className="h-[250px]">
                 <UserGrowthChart data={data.userGrowth} />
@@ -100,10 +100,10 @@ export default function AdminAnalyticsPage() {
             </div>
 
             {/* Event Categories */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+            <div className="bg-card rounded-2xl border border-border shadow-sm p-6">
               <div className="mb-6">
-                <h2 className="text-base font-bold text-gray-900">Events by Category</h2>
-                <p className="text-xs text-gray-400 mt-0.5">Distribution of all events</p>
+                <h2 className="text-base font-bold text-foreground">Events by Category</h2>
+                <p className="text-xs text-muted-foreground mt-0.5">Distribution of all events</p>
               </div>
               <div className="h-[250px]">
                 <CategoryDistributionChart data={data.categoryDistribution} />
@@ -111,10 +111,10 @@ export default function AdminAnalyticsPage() {
             </div>
 
             {/* Booking Status Distribution */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+            <div className="bg-card rounded-2xl border border-border shadow-sm p-6">
               <div className="mb-6">
-                <h2 className="text-base font-bold text-gray-900">Booking Status</h2>
-                <p className="text-xs text-gray-400 mt-0.5">Current state of all bookings</p>
+                <h2 className="text-base font-bold text-foreground">Booking Status</h2>
+                <p className="text-xs text-muted-foreground mt-0.5">Current state of all bookings</p>
               </div>
               <div className="h-[250px]">
                 <BookingStatusPieChart data={data.bookingStatus} />
@@ -147,7 +147,7 @@ export default function AdminAnalyticsPage() {
           </div>
         </>
       ) : (
-        <div className="text-center py-12 text-gray-500">Failed to load analytics data.</div>
+        <div className="text-center py-12 text-muted-foreground">Failed to load analytics data.</div>
       )}
     </div>
   );

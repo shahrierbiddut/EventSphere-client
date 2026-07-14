@@ -72,7 +72,7 @@ export default function EventDetailsPage() {
   if (!event) return <div className="p-20 text-center">Event not found</div>;
 
   return (
-    <div className="bg-gray-50 min-h-screen pb-20">
+    <div className="bg-muted min-h-screen pb-20">
       {/* Hero Banner */}
       <div className="w-full h-[40vh] md:h-[50vh] relative bg-black">
         <img
@@ -131,21 +131,21 @@ export default function EventDetailsPage() {
                     key={i}
                     src={img}
                     alt="Gallery"
-                    className="h-32 md:h-40 w-auto object-cover rounded-xl shrink-0 snap-center border border-gray-200 shadow-sm"
+                    className="h-32 md:h-40 w-auto object-cover rounded-xl shrink-0 snap-center border border-border shadow-sm"
                   />
                 ))}
               </div>
             )}
 
             {/* Description */}
-            <section className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+            <section className="bg-card rounded-2xl p-6 md:p-8 shadow-sm border border-border">
               <h2 className="text-2xl font-bold font-heading mb-4">
                 About This Event
               </h2>
-              <p className="text-lg text-gray-700 leading-relaxed mb-6 font-medium">
+              <p className="text-lg text-foreground leading-relaxed mb-6 font-medium">
                 {event.shortDescription}
               </p>
-              <div className="prose prose-gray max-w-none text-gray-600 leading-relaxed space-y-4">
+              <div className="prose prose-gray max-w-none text-muted-foreground leading-relaxed space-y-4">
                 <p>{event.description}</p>
                 <p>
                   Don't miss this opportunity to connect, learn, and grow. Our
@@ -156,7 +156,7 @@ export default function EventDetailsPage() {
             </section>
 
             {/* Schedule */}
-            <section className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+            <section className="bg-card rounded-2xl p-6 md:p-8 shadow-sm border border-border">
               <h2 className="text-2xl font-bold font-heading mb-6">
                 Event Schedule
               </h2>
@@ -197,16 +197,16 @@ export default function EventDetailsPage() {
                       <Clock className="w-5 h-5" />
                     </div>
                     {/* Content */}
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-gray-50 p-4 rounded border border-gray-100 shadow-sm">
+                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-muted p-4 rounded border border-border shadow-sm">
                       <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-bold text-gray-900">
+                        <h4 className="font-bold text-foreground">
                           {item.title}
                         </h4>
                         <span className="text-sm font-semibold text-primary">
                           {item.time}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-500">{item.desc}</p>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -214,7 +214,7 @@ export default function EventDetailsPage() {
             </section>
 
             {/* Map Placeholder */}
-            <section className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+            <section className="bg-card rounded-2xl p-6 md:p-8 shadow-sm border border-border">
               <h2 className="text-2xl font-bold font-heading mb-6">
                 Venue Location
               </h2>
@@ -222,10 +222,10 @@ export default function EventDetailsPage() {
                 <MapPin className="h-6 w-6 text-primary shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-lg">{event.venue}</h4>
-                  <p className="text-gray-500">{event.location}</p>
+                  <p className="text-muted-foreground">{event.location}</p>
                 </div>
               </div>
-              <div className="w-full h-64 bg-gray-200 rounded-xl overflow-hidden relative border border-gray-200">
+              <div className="w-full h-64 bg-gray-200 rounded-xl overflow-hidden relative border border-border">
                 <img
                   src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop"
                   alt="Map Placeholder"
@@ -243,9 +243,9 @@ export default function EventDetailsPage() {
           {/* Sticky Sidebar (Right Column) */}
           <div className="lg:col-span-1 space-y-6">
             {/* Booking Card */}
-            <div className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100 sticky top-24">
+            <div className="bg-card rounded-2xl p-6 shadow-xl border border-border sticky top-24">
               <div className="mb-6">
-                <span className="text-sm text-gray-500 font-medium">
+                <span className="text-sm text-muted-foreground font-medium">
                   Ticket Price
                 </span>
                 <div className="flex items-end gap-2 mt-1">
@@ -255,10 +255,10 @@ export default function EventDetailsPage() {
                     </span>
                   ) : (
                     <>
-                      <span className="text-4xl font-bold font-heading text-gray-900">
+                      <span className="text-4xl font-bold font-heading text-foreground">
                         ${event.price}
                       </span>
-                      <span className="text-gray-500 mb-1">/ person</span>
+                      <span className="text-muted-foreground mb-1">/ person</span>
                     </>
                   )}
                 </div>
@@ -285,49 +285,49 @@ export default function EventDetailsPage() {
                   (event.availableSeats > 0 ? "Book Now" : "Sold Out")}
               </Button>
 
-              <p className="text-xs text-center text-gray-500">
+              <p className="text-xs text-center text-muted-foreground">
                 You must be logged in to book tickets.
               </p>
 
-              <hr className="my-6 border-gray-100" />
+              <hr className="my-6 border-border" />
 
               <div className="flex justify-between items-center">
-                <span className="font-medium text-gray-700">
+                <span className="font-medium text-foreground">
                   Share this event
                 </span>
                 <div className="flex gap-2">
                   <Button
                     variant="outline"
                     size="icon"
-                    className="rounded-full bg-gray-50 hover:bg-gray-100 border-gray-200"
+                    className="rounded-full bg-muted hover:bg-muted border-border"
                   >
-                    <Share2 className="h-4 w-4 text-gray-600" />
+                    <Share2 className="h-4 w-4 text-muted-foreground" />
                   </Button>
                   <Button
                     variant="outline"
                     size="icon"
-                    className="rounded-full bg-gray-50 hover:bg-gray-100 border-gray-200"
+                    className="rounded-full bg-muted hover:bg-muted border-border"
                   >
-                    <Heart className="h-4 w-4 text-gray-600" />
+                    <Heart className="h-4 w-4 text-muted-foreground" />
                   </Button>
                 </div>
               </div>
             </div>
 
             {/* Organizer Card */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div className="bg-card rounded-2xl p-6 shadow-sm border border-border">
               <h3 className="font-semibold text-lg mb-4">Organized By</h3>
               <div className="flex items-center gap-4 mb-4">
                 <img
                   src={event.organizer.logoUrl}
                   alt={event.organizer.name}
-                  className="h-14 w-14 rounded-full border border-gray-200 shadow-sm"
+                  className="h-14 w-14 rounded-full border border-border shadow-sm"
                 />
                 <div>
-                  <h4 className="font-bold text-gray-900">
+                  <h4 className="font-bold text-foreground">
                     {event.organizer.name}
                   </h4>
-                  <div className="flex items-center gap-1 text-sm text-gray-500 mt-0.5">
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground mt-0.5">
                     <CircleCheck className="h-4 w-4 text-success" /> Verified
                     Organizer
                   </div>
@@ -344,14 +344,14 @@ export default function EventDetailsPage() {
       {/* Guest Login Required Modal */}
       {showLoginModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 text-center animate-slide-up">
+          <div className="bg-card rounded-2xl shadow-2xl max-w-md w-full p-8 text-center animate-slide-up">
             <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
               <Users className="h-8 w-8" />
             </div>
             <h2 className="text-2xl font-bold font-heading mb-3">
               Login Required
             </h2>
-            <p className="text-gray-600 mb-8 leading-relaxed">
+            <p className="text-muted-foreground mb-8 leading-relaxed">
               To book a ticket for <strong>{event.title}</strong>, you need to
               be logged into your EventSphere account.
             </p>
@@ -363,7 +363,7 @@ export default function EventDetailsPage() {
                 <Link href="/register">Create an Account</Link>
               </Button>
               <button
-                className="text-sm text-gray-500 hover:text-gray-900 mt-4 underline-offset-4 hover:underline"
+                className="text-sm text-muted-foreground hover:text-foreground mt-4 underline-offset-4 hover:underline"
                 onClick={() => setShowLoginModal(false)}
               >
                 Cancel and continue browsing

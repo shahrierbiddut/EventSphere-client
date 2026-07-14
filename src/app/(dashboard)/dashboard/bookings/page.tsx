@@ -53,26 +53,26 @@ export default function BookingsPage() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-gray-900">My Bookings</h1>
-          <p className="text-gray-500 text-sm mt-1">Manage all your event tickets in one place.</p>
+          <h1 className="text-2xl font-bold font-heading text-foreground">My Bookings</h1>
+          <p className="text-muted-foreground text-sm mt-1">Manage all your event tickets in one place.</p>
         </div>
 
         <div className="flex bg-gray-100/80 p-1 rounded-xl">
           <button 
             onClick={() => setFilter("all")}
-            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${filter === "all" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"}`}
+            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${filter === "all" ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
           >
             All
           </button>
           <button 
             onClick={() => setFilter("confirmed")}
-            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${filter === "confirmed" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"}`}
+            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${filter === "confirmed" ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
           >
             Confirmed
           </button>
           <button 
             onClick={() => setFilter("cancelled")}
-            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${filter === "cancelled" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"}`}
+            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${filter === "cancelled" ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
           >
             Cancelled
           </button>
@@ -81,7 +81,7 @@ export default function BookingsPage() {
 
       {isLoading ? (
         <div className="space-y-4">
-          {[1, 2, 3].map(i => <div key={i} className="h-48 bg-gray-100 rounded-2xl animate-pulse"></div>)}
+          {[1, 2, 3].map(i => <div key={i} className="h-48 bg-muted rounded-2xl animate-pulse"></div>)}
         </div>
       ) : filteredBookings.length > 0 ? (
         <div className="space-y-4">
@@ -95,14 +95,14 @@ export default function BookingsPage() {
           ))}
         </div>
       ) : (
-        <div className="bg-white rounded-2xl border border-dashed border-gray-200 p-12 text-center flex flex-col items-center justify-center">
-          <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-4">
+        <div className="bg-card rounded-2xl border border-dashed border-border p-12 text-center flex flex-col items-center justify-center">
+          <div className="w-20 h-20 bg-muted rounded-full flex items-center justify-center mb-4">
             <Ticket className="h-10 w-10 text-gray-300" />
           </div>
-          <h3 className="text-xl font-bold text-gray-900 mb-2">
+          <h3 className="text-xl font-bold text-foreground mb-2">
             {filter === "all" ? "No bookings found" : `No ${filter} bookings`}
           </h3>
-          <p className="text-gray-500 max-w-sm">
+          <p className="text-muted-foreground max-w-sm">
             {filter === "all" 
               ? "You haven't booked any events yet. When you do, they will appear here." 
               : `You don't have any ${filter} bookings at the moment.`}

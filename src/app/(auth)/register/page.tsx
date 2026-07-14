@@ -99,22 +99,22 @@ export default function RegisterPage() {
 
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-white">
+    <div className="min-h-screen flex flex-col md:flex-row bg-card">
       {/* Left Column - Form */}
       <div className="w-full md:w-1/2 lg:w-[45%] flex flex-col justify-center p-8 sm:p-12 lg:p-16 relative z-10 overflow-y-auto">
         <Link
           href="/"
-          className="absolute top-8 left-8 sm:left-12 flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors"
+          className="absolute top-8 left-8 sm:left-12 flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
         </Link>
 
         <div className="max-w-md w-full mx-auto space-y-8 mt-12 md:mt-0">
           <div className="space-y-2">
-            <h1 className="text-3xl font-bold font-heading tracking-tight text-gray-900">
+            <h1 className="text-3xl font-bold font-heading tracking-tight text-foreground">
               Create an account
             </h1>
-            <p className="text-gray-500">
+            <p className="text-muted-foreground">
               Join EventSphere and discover amazing events around you.
             </p>
           </div>
@@ -151,10 +151,10 @@ export default function RegisterPage() {
 
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-200"></div>
+              <div className="w-full border-t border-border"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-gray-500">
+              <span className="bg-card px-2 text-muted-foreground">
                 Or register with email
               </span>
             </div>
@@ -169,13 +169,13 @@ export default function RegisterPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-1.5">
               <label
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-foreground"
                 htmlFor="name"
               >
                 Full Name
               </label>
               <div className="relative">
-                <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <UserIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   id="name"
                   name="name"
@@ -190,13 +190,13 @@ export default function RegisterPage() {
 
             <div className="space-y-1.5">
               <label
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-foreground"
                 htmlFor="photoUrl"
               >
                 Photo URL (Optional)
               </label>
               <div className="relative">
-                <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   id="photoUrl"
                   name="photoUrl"
@@ -211,13 +211,13 @@ export default function RegisterPage() {
 
             <div className="space-y-1.5">
               <label
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-foreground"
                 htmlFor="email"
               >
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   id="email"
                   name="email"
@@ -233,13 +233,13 @@ export default function RegisterPage() {
 
             <div className="space-y-1.5">
               <label
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-foreground"
                 htmlFor="password"
               >
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   id="password"
                   name="password"
@@ -253,7 +253,7 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
                 >
                   {showPassword ? (
                     <EyeOff className="h-5 w-5" />
@@ -286,13 +286,13 @@ export default function RegisterPage() {
 
             <div className="space-y-1.5">
               <label
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-foreground"
                 htmlFor="confirmPassword"
               >
                 Confirm Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   id="confirmPassword"
                   name="confirmPassword"
@@ -306,7 +306,7 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
                 >
                   {showConfirmPassword ? (
                     <EyeOff className="h-5 w-5" />
@@ -328,7 +328,7 @@ export default function RegisterPage() {
               />
               <label
                 htmlFor="acceptTerms"
-                className="ml-2 block text-sm text-gray-600"
+                className="ml-2 block text-sm text-muted-foreground"
               >
                 I agree to the{" "}
                 <Link
@@ -356,7 +356,7 @@ export default function RegisterPage() {
             </Button>
           </form>
 
-          <p className="text-center text-sm text-gray-500 pb-8">
+          <p className="text-center text-sm text-muted-foreground pb-8">
             Already have an account?{" "}
             <Link
               href="/login"
@@ -404,7 +404,7 @@ export default function RegisterPage() {
                   className="w-10 h-10 rounded-full border-2 border-indigo-900"
                   alt="User"
                 />
-                <div className="w-10 h-10 rounded-full border-2 border-indigo-900 bg-white text-indigo-900 flex items-center justify-center font-bold text-xs">
+                <div className="w-10 h-10 rounded-full border-2 border-indigo-900 bg-card text-indigo-900 flex items-center justify-center font-bold text-xs">
                   +5k
                 </div>
               </div>

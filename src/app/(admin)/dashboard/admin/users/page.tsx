@@ -118,7 +118,7 @@ export default function AdminUsersPage() {
       </div>
 
       {/* Filters Toolbar */}
-      <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100/80 flex flex-col sm:flex-row gap-4 items-center">
+      <div className="bg-card p-4 rounded-2xl shadow-sm border border-slate-100/80 flex flex-col sm:flex-row gap-4 items-center">
         <div className="relative flex-1 w-full">
           <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
@@ -126,7 +126,7 @@ export default function AdminUsersPage() {
             placeholder="Filter accounts by name or email address..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-11 pr-4 py-2 bg-slate-50 hover:bg-slate-100/50 focus:bg-white rounded-xl border border-slate-200/60 focus:border-indigo-400 focus:outline-none transition-all text-xs font-semibold"
+            className="w-full pl-11 pr-4 py-2 bg-slate-50 hover:bg-slate-100/50 focus:bg-card rounded-xl border border-slate-200/60 focus:border-indigo-400 focus:outline-none transition-all text-xs font-semibold"
           />
         </div>
         <select
@@ -143,7 +143,7 @@ export default function AdminUsersPage() {
       </div>
 
       {/* Modern Data Table */}
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+      <div className="bg-card rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left whitespace-nowrap">
             <thead className="bg-slate-50 border-b border-slate-100 text-slate-400 text-[10px] font-bold uppercase tracking-wider">

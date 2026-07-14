@@ -13,16 +13,23 @@ import { EventCard } from "@/components/events/EventCard";
 import { Input } from "@/components/ui/Input";
 import { categories } from "@/data/categories";
 import { events as fallbackEvents } from "@/data/events";
-import { getEvents } from "@/lib/api";
+import { getEvents, getCategories } from "@/lib/api";
 import { Event } from "@/types";
 
 export default async function HomePage() {
   let events = fallbackEvents;
+  let pageCategories = categories;
 
   try {
     events = await getEvents<Event[]>();
   } catch {
     events = fallbackEvents;
+  }
+
+  try {
+    pageCategories = await getCategories();
+  } catch {
+    pageCategories = categories;
   }
 
   const featuredEvents = events.filter((event) => event.isFeatured).slice(0, 6);
@@ -37,7 +44,6 @@ export default async function HomePage() {
             alt="Event crowds"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-x-0 top-0 h-36 bg-linear-to-b from-black/70 via-black/45 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-indigo-950/50" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70" />
         </div>
@@ -126,7 +132,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-card">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-between items-end gap-4 mb-10">
             <div>
@@ -152,7 +158,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-muted">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl font-bold font-heading mb-2">
             Browse by Category
@@ -240,17 +246,17 @@ export default async function HomePage() {
               <Link
                 key={cat.name}
                 href={`/explore?category=${encodeURIComponent(cat.name)}`}
-                className="group flex flex-col items-center justify-center p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 overflow-hidden relative"
+                className="group flex flex-col items-center justify-center p-5 rounded-2xl border border-border bg-card hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 overflow-hidden relative"
               >
                 <div
                   className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${cat.color} flex items-center justify-center text-2xl mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300`}
                 >
                   {cat.emoji}
                 </div>
-                <h3 className="font-bold text-sm text-gray-800 group-hover:text-primary transition-colors leading-tight text-center">
+                <h3 className="font-bold text-sm text-foreground group-hover:text-primary transition-colors leading-tight text-center">
                   {cat.name}
                 </h3>
-                <span className="text-xs text-gray-400 mt-1 font-medium">
+                <span className="text-xs text-muted-foreground mt-1 font-medium">
                   {cat.count}+ events
                 </span>
                 <div
@@ -262,7 +268,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-muted">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -283,7 +289,9 @@ export default async function HomePage() {
                 ].map((feature) => (
                   <div key={feature} className="flex items-start gap-3">
                     <CircleCheck className="h-6 w-6 text-success shrink-0" />
-                    <span className="text-gray-700 font-medium">{feature}</span>
+                    <span className="text-foreground font-medium">
+                      {feature}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -297,13 +305,13 @@ export default async function HomePage() {
               ].map(({ icon: Icon, label, value }) => (
                 <div
                   key={label}
-                  className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-3"
+                  className="bg-card p-6 rounded-2xl shadow-sm border border-border flex flex-col items-center text-center gap-3"
                 >
                   <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center">
                     <Icon className="h-6 w-6" />
                   </div>
                   <h3 className="font-bold text-xl">{value}</h3>
-                  <p className="text-sm text-gray-500">{label}</p>
+                  <p className="text-sm text-muted-foreground">{label}</p>
                 </div>
               ))}
             </div>
@@ -334,7 +342,7 @@ export default async function HomePage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
               size="lg"
-              className="rounded-full px-10 h-14 text-base bg-white text-indigo-700 hover:bg-indigo-50 shadow-2xl shadow-black/30 font-bold"
+              className="rounded-full px-10 h-14 text-base bg-card text-indigo-700 hover:bg-indigo-50 shadow-2xl shadow-black/30 font-bold"
               asChild
             >
               <Link href="/register">Create Free Account</Link>

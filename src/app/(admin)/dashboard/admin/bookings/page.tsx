@@ -77,7 +77,7 @@ export default function AdminBookingsPage() {
       </div>
 
       {/* Filters Toolbar */}
-      <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100/80 flex flex-col sm:flex-row gap-4 items-center">
+      <div className="bg-card p-4 rounded-2xl shadow-sm border border-slate-100/80 flex flex-col sm:flex-row gap-4 items-center">
         <div className="relative flex-1 w-full opacity-50 cursor-not-allowed" title="Search disabled on bookings for now">
           <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
@@ -103,7 +103,7 @@ export default function AdminBookingsPage() {
       </div>
 
       {/* Modern Data Table */}
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+      <div className="bg-card rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left whitespace-nowrap">
             <thead className="bg-slate-50 border-b border-slate-100 text-slate-400 text-[10px] font-bold uppercase tracking-wider">

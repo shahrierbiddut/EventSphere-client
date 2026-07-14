@@ -32,10 +32,10 @@ export function FavoriteCard({ event, onRemove, isRemoving }: FavoriteCardProps)
     Gaming: "bg-indigo-50 text-indigo-700 border-indigo-100",
   };
 
-  const badgeStyle = categoryGradients[event.category] || "bg-gray-50 text-gray-700 border-gray-100";
+  const badgeStyle = categoryGradients[event.category] || "bg-muted text-foreground border-border";
 
   return (
-    <Card className="group overflow-hidden flex flex-col h-full bg-white border border-gray-100/80 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-indigo-900/[0.04] hover:-translate-y-1.5 transition-all duration-300 ease-out">
+    <Card className="group overflow-hidden flex flex-col h-full bg-card border border-gray-100/80 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-indigo-900/[0.04] hover:-translate-y-1.5 transition-all duration-300 ease-out">
       <div className="relative h-52 w-full overflow-hidden bg-gray-150">
         <img
           src={event.imageUrl}
@@ -51,7 +51,7 @@ export function FavoriteCard({ event, onRemove, isRemoving }: FavoriteCardProps)
             <span className="bg-primary text-[10px] font-extrabold text-white uppercase w-full py-1 text-center tracking-wider leading-none">
               {month}
             </span>
-            <span className="text-gray-800 text-lg font-black py-1.5 leading-none">
+            <span className="text-foreground text-lg font-black py-1.5 leading-none">
               {day}
             </span>
           </div>
@@ -72,7 +72,7 @@ export function FavoriteCard({ event, onRemove, isRemoving }: FavoriteCardProps)
             onRemove(event._id || event.id);
           }}
           disabled={isRemoving}
-          className="absolute top-4 right-4 p-2 rounded-xl bg-white/90 hover:bg-white text-red-500 backdrop-blur-md transition-all duration-200 shadow-md hover:scale-105 border border-white/40 group/btn"
+          className="absolute top-4 right-4 p-2 rounded-xl bg-white/90 hover:bg-card text-red-500 backdrop-blur-md transition-all duration-200 shadow-md hover:scale-105 border border-white/40 group/btn"
           title="Remove from favorites"
         >
           <Heart className={`h-5 w-5 fill-red-500 transition-colors ${isRemoving ? "opacity-50" : ""}`} />
@@ -85,26 +85,26 @@ export function FavoriteCard({ event, onRemove, isRemoving }: FavoriteCardProps)
             <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
             <span>{event.rating.toFixed(1)}</span>
           </div>
-          <span className="text-xs text-gray-400 font-medium">({event.reviewCount} reviews)</span>
+          <span className="text-xs text-muted-foreground font-medium">({event.reviewCount} reviews)</span>
         </div>
 
         <div className="space-y-1">
           <Link href={`/events/${event.id || event.slug}`} className="hover:text-primary transition-colors block">
-            <h3 className="font-heading font-bold text-lg text-gray-900 group-hover:text-primary transition-colors leading-snug line-clamp-2">
+            <h3 className="font-heading font-bold text-lg text-foreground group-hover:text-primary transition-colors leading-snug line-clamp-2">
               {event.title}
             </h3>
           </Link>
         </div>
 
-        <div className="space-y-2 text-sm text-gray-500 font-medium">
+        <div className="space-y-2 text-sm text-muted-foreground font-medium">
           <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-primary group-hover:bg-primary/5 transition-colors">
+            <div className="w-7 h-7 rounded-lg bg-muted flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:bg-primary/5 transition-colors">
               <Clock className="h-4 w-4" />
             </div>
             <span>{event.time}</span>
           </div>
           <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-lg bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-primary group-hover:bg-primary/5 transition-colors">
+            <div className="w-7 h-7 rounded-lg bg-muted flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:bg-primary/5 transition-colors">
               <MapPin className="h-4 w-4" />
             </div>
             <span className="line-clamp-1">{event.location}</span>
@@ -112,9 +112,9 @@ export function FavoriteCard({ event, onRemove, isRemoving }: FavoriteCardProps)
         </div>
       </CardContent>
 
-      <CardFooter className="p-5 pt-0 mt-auto border-t border-gray-50 pt-4 flex items-center justify-between">
+      <CardFooter className="p-5 pt-0 mt-auto border-t border-border pt-4 flex items-center justify-between">
         <div className="text-left">
-          <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider leading-none mb-0.5">Ticket</span>
+          <span className="block text-[10px] text-muted-foreground font-bold uppercase tracking-wider leading-none mb-0.5">Ticket</span>
           {event.isFree ? (
             <span className="text-emerald-600 font-extrabold text-sm">Free</span>
           ) : (

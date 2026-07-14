@@ -186,7 +186,7 @@ export function AdminPagination({ page, pages, total, onPageChange }: AdminPagin
   if (pages <= 1) return null;
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-4 border-t border-slate-100 bg-white">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-4 border-t border-slate-100 bg-card">
       <p className="text-xs text-slate-400 font-semibold">
         Showing page <span className="text-slate-700 font-extrabold">{page}</span> of <span className="text-slate-700 font-extrabold">{pages}</span> — <span className="text-slate-700 font-extrabold">{total}</span> total results
       </p>
