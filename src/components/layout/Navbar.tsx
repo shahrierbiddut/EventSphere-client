@@ -27,29 +27,20 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
   const pathname = usePathname();
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
 
   React.useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  React.useEffect(() => {
-    if (!isMounted) return;
-
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMounted]);
+  }, []);
 
   // Close dropdowns when clicking outside
   React.useEffect(() => {
-    if (!isMounted) return;
-
     const handleClickOutside = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (!target.closest(".profile-dropdown-container")) {
@@ -58,7 +49,7 @@ export function Navbar() {
     };
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
-  }, [isMounted]);
+  }, []);
 
   // Close mobile menu on route change
   React.useEffect(() => {
@@ -202,17 +193,11 @@ export function Navbar() {
                   className="flex items-center gap-2.5 p-1 pr-3 rounded-full hover:bg-slate-800 border border-transparent hover:border-slate-700 transition-all"
                 >
                   <div className="relative">
-                    {user.photoUrl ? (
-                      <img
-                        src={user.photoUrl}
-                        alt={user.name}
-                        className="h-9 w-9 rounded-full object-cover border border-slate-700"
-                      />
-                    ) : (
-                      <div className="h-9 w-9 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm border border-indigo-500/30">
-                        {initials}
-                      </div>
-                    )}
+                    <img
+                      src={LOGO_SRC}
+                      alt="EventSphere profile"
+                      className="h-10 w-10 rounded-full bg-white object-contain p-1 border border-slate-700"
+                    />
                     <span className="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-[#0F172A]" />
                   </div>
                   <span className="text-sm font-medium text-slate-200">
@@ -224,17 +209,11 @@ export function Navbar() {
                 {isProfileOpen && (
                   <div className="absolute right-0 mt-3 w-64 bg-[#0F172A] rounded-2xl shadow-xl shadow-slate-900/20 border border-slate-800 overflow-hidden py-2 transform opacity-100 scale-100 transition-all origin-top-right">
                     <div className="px-4 py-3 border-b border-slate-800/80 flex items-center gap-3">
-                      {user.photoUrl ? (
-                        <img
-                          src={user.photoUrl}
-                          alt={user.name}
-                          className="h-10 w-10 rounded-full object-cover border border-slate-700"
-                        />
-                      ) : (
-                        <div className="h-10 w-10 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-sm border border-indigo-500/30">
-                          {initials}
-                        </div>
-                      )}
+                      <img
+                        src={LOGO_SRC}
+                        alt="EventSphere profile"
+                        className="h-10 w-10 rounded-full bg-white object-contain p-1 border border-slate-700"
+                      />
                       <div className="min-w-0">
                         <p className="text-sm font-semibold text-white truncate">
                           {user.name}
@@ -376,17 +355,11 @@ export function Navbar() {
               <>
                 <div className="flex items-center gap-4 p-4 bg-slate-800/50 rounded-2xl border border-slate-700/50">
                   <div className="relative">
-                    {user.photoUrl ? (
-                      <img
-                        src={user.photoUrl}
-                        alt={user.name}
-                        className="h-12 w-12 rounded-full object-cover border border-slate-700"
-                      />
-                    ) : (
-                      <div className="h-12 w-12 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-lg border border-indigo-500/30">
-                        {initials}
-                      </div>
-                    )}
+                    <img
+                      src={LOGO_SRC}
+                      alt="EventSphere profile"
+                      className="h-12 w-12 rounded-full bg-white object-contain p-1.5 border border-slate-700"
+                    />
                     <span className="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-emerald-500 ring-2 ring-[#0F172A]" />
                   </div>
                   <div>

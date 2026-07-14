@@ -6,6 +6,12 @@ import { Bell, Menu, Search, ChevronRight, Moon, Mail, ChevronDown } from "lucid
 import { useAuth } from "@/lib/AuthContext";
 import { apiRequest } from "@/lib/api";
 
+const LOGO_SRC = "/Logo.png";
+
+interface UnreadCountResponse {
+  count: number;
+}
+
 interface AdminHeaderProps {
   setSidebarOpen: (open: boolean) => void;
   title?: string;
@@ -16,12 +22,16 @@ export function AdminHeader({ setSidebarOpen, title = "Dashboard", breadcrumbs }
   const { user } = useAuth();
   const [unreadCount, setUnreadCount] = useState<number>(0);
 
+  const initials = user?.name
+    ? user.name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)
+    : "A";
+
   useEffect(() => {
     const fetchUnreadCount = async () => {
       try {
-        const res = await apiRequest("/api/admin/messages/unread-count");
-        if (res && typeof (res as any).count === "number") {
-          setUnreadCount((res as any).count);
+        const res = await apiRequest<UnreadCountResponse>("/api/admin/messages/unread-count");
+        if (typeof res.count === "number") {
+          setUnreadCount(res.count);
         }
       } catch (error) {
         console.error("Failed to fetch unread message count:", error);
@@ -32,10 +42,6 @@ export function AdminHeader({ setSidebarOpen, title = "Dashboard", breadcrumbs }
     const interval = setInterval(fetchUnreadCount, 60000); // Poll every minute
     return () => clearInterval(interval);
   }, []);
-
-  const initials = user?.name
-    ? user.name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2)
-    : "A";
 
   return (
     <header className="sticky top-0 z-30 bg-[#0F172A] border-b border-slate-800/80 h-16 flex items-center justify-between px-4 md:px-8 gap-4 shadow-sm">

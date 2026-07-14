@@ -3,6 +3,8 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 
+const LOGO_SRC = "/Logo.png";
+
 export function Footer() {
   return (
     <footer className="bg-card text-muted-foreground border-t border-border">
