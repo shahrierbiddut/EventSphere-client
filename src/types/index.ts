@@ -68,6 +68,7 @@ export interface Event {
 }
 
 export interface Category {
+  _id?: string
   id: string
   name: string
   slug: string

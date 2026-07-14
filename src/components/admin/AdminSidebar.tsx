@@ -8,6 +8,7 @@ import {
   BookOpen,
   ChevronLeft,
   ChevronRight,
+  Globe,
   LayoutDashboard,
   LogOut,
   Mail,
@@ -145,6 +146,22 @@ export function AdminSidebar({ isOpen, setIsOpen }: AdminSidebarProps) {
               {initials}
             </div>
           )}
+
+          {/* View Website Button */}
+          <Link
+            href="/"
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sky-400 bg-sky-500/5 hover:bg-sky-500/15 border border-sky-500/10 hover:border-sky-500/25 transition-all group relative ${
+              collapsed ? "justify-center" : ""
+            }`}
+          >
+            <Globe size={18} className="flex-shrink-0" />
+            {!collapsed && <span className="text-sm font-semibold">View Website</span>}
+            {collapsed && (
+              <div className="absolute left-full ml-3 px-2 py-1 bg-slate-950 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 shadow-2xl border border-slate-800 transition-opacity">
+                View Website
+              </div>
+            )}
+          </Link>
 
           {/* Logout Button */}
           <button

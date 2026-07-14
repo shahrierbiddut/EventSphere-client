@@ -19,6 +19,7 @@ import {
   Settings,
   HelpCircle,
   LogOut,
+  ShieldCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
@@ -70,7 +71,6 @@ export function Navbar() {
   const guestNavLinks = [
     { name: "Home", href: "/" },
     { name: "Explore Events", href: "/explore" },
-    { name: "Categories", href: "/categories" },
     { name: "About", href: "/about" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
@@ -167,6 +167,15 @@ export function Navbar() {
               >
                 {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
               </button>
+              {/* Admin Panel Quick Access — only shown to admins on public site */}
+              {user.role === "admin" && (
+                <Link
+                  href="/dashboard/admin"
+                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/25 text-amber-400 hover:bg-amber-500/20 hover:text-amber-300 text-xs font-bold transition-all"
+                >
+                  <ShieldCheck size={13} /> Admin Panel
+                </Link>
+              )}
               {/* Favorites */}
               <Link
                 href="/dashboard/favorites"
@@ -231,19 +240,45 @@ export function Navbar() {
                           {user.name}
                         </p>
                         <p className="text-xs text-slate-400 truncate">
-                          View your profile
+                          {user.role === "admin" ? (
+                            <span className="inline-flex items-center gap-1 text-amber-400 font-semibold">
+                              <ShieldCheck size={10} /> Administrator
+                            </span>
+                          ) : "View your profile"}
                         </p>
                       </div>
                     </div>
 
                     <div className="px-2 py-2 space-y-0.5">
-                      <Link
-                        href="/dashboard"
-                        onClick={() => setIsProfileOpen(false)}
-                        className="flex items-center gap-3 px-3 py-2 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-xl transition-colors"
-                      >
-                        <LayoutDashboard size={16} /> Dashboard
-                      </Link>
+                      {/* Admin-only shortcuts */}
+                      {user.role === "admin" && (
+                        <>
+                          <Link
+                            href="/dashboard/admin"
+                            onClick={() => setIsProfileOpen(false)}
+                            className="flex items-center gap-3 px-3 py-2 text-sm text-amber-400 hover:text-amber-300 hover:bg-amber-500/10 rounded-xl transition-colors font-semibold"
+                          >
+                            <ShieldCheck size={16} /> Admin Dashboard
+                          </Link>
+                          <Link
+                            href="/dashboard"
+                            onClick={() => setIsProfileOpen(false)}
+                            className="flex items-center gap-3 px-3 py-2 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-xl transition-colors"
+                          >
+                            <LayoutDashboard size={16} /> My Dashboard
+                          </Link>
+                          <div className="border-t border-slate-800/60 my-1" />
+                        </>
+                      )}
+                      {user.role !== "admin" && (
+                        <Link
+                          href="/dashboard"
+                          onClick={() => setIsProfileOpen(false)}
+                          className="flex items-center gap-3 px-3 py-2 text-sm text-slate-300 hover:text-white hover:bg-slate-800 rounded-xl transition-colors"
+                        >
+                          <LayoutDashboard size={16} /> Dashboard
+                        </Link>
+                      )}
                       <Link
                         href="/dashboard/bookings"
                         onClick={() => setIsProfileOpen(false)}

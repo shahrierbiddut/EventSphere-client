@@ -19,7 +19,7 @@ export function AdminHeader({ setSidebarOpen, title = "Dashboard", breadcrumbs }
   useEffect(() => {
     const fetchUnreadCount = async () => {
       try {
-        const res = await apiRequest("/admin/messages/unread-count");
+        const res = await apiRequest("/api/admin/messages/unread-count");
         if (res && typeof (res as any).count === "number") {
           setUnreadCount((res as any).count);
         }

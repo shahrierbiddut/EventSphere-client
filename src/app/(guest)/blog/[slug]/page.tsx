@@ -5,8 +5,9 @@ import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, Share2, Copy } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { blogPosts as fallbackBlogPosts } from "@/data/blogPosts";
+import { blogPosts } from "@/data/blogPosts";
 import { getBlogBySlug, getBlogs } from "@/lib/api";
+import { BlogPost } from "@/types";
 
 export default function BlogDetailPage({
   params,
@@ -14,7 +15,7 @@ export default function BlogDetailPage({
   params: { slug: string };
 }) {
   const [slug, setSlug] = React.useState<string | null>(null);
-  const [post, setPost] = React.useState(fallbackBlogPosts[0]);
+  const [post, setPost] = React.useState(blogPosts[0]);
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
@@ -27,17 +28,17 @@ export default function BlogDetailPage({
 
       try {
         // Try to fetch from API first
-        const data = await getBlogBySlug(slug);
+        const data = await getBlogBySlug<BlogPost>(slug);
         if (data) {
           setPost(data);
         } else {
           // Fallback to mock data
-          const found = fallbackBlogPosts.find((p) => p.slug === slug);
+          const found = blogPosts.find((p) => p.slug === slug);
           if (found) setPost(found);
         }
       } catch {
         // Fallback to mock data on error
-        const found = fallbackBlogPosts.find((p) => p.slug === slug);
+        const found = blogPosts.find((p) => p.slug === slug);
         if (found) setPost(found);
       } finally {
         setIsLoading(false);
