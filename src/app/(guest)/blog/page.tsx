@@ -90,13 +90,13 @@ export default function BlogPage() {
                   <div className="flex items-center justify-between mt-auto">
                     <div className="flex items-center gap-3">
                       <img
-                        src={featuredPost.author.avatarUrl}
-                        alt={featuredPost.author.name}
+                        src={featuredPost.author?.avatarUrl || "https://ui-avatars.com/api/?name=Author"}
+                        alt={featuredPost.author?.name || "Author"}
                         className="w-10 h-10 rounded-full border border-border"
                       />
                       <div>
                         <p className="font-semibold text-sm text-foreground">
-                          {featuredPost.author.name}
+                          {featuredPost.author?.name || "Author"}
                         </p>
                         <p className="text-xs text-muted-foreground">
                           {featuredPost.readTime}
