@@ -42,8 +42,8 @@ export default function FAQPage() {
 
   const filteredFaqs = faqs.filter((faq: any) => {
     const matchesSearch =
-      faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
+      (faq.question?.toLowerCase() || "").includes(searchQuery.toLowerCase()) ||
+      (faq.answer?.toLowerCase() || "").includes(searchQuery.toLowerCase());
     const matchesCategory =
       activeCategory === "All" || faq.category === activeCategory;
     return matchesSearch && matchesCategory;

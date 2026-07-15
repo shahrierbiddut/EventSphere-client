@@ -12,15 +12,16 @@ import { BlogPost } from "@/types";
 export default function BlogDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const unwrappedParams = React.use(params);
   const [slug, setSlug] = React.useState<string | null>(null);
   const [post, setPost] = React.useState(blogPosts[0]);
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    setSlug(params?.slug || "10-tips-hosting-tech-conference");
-  }, [params]);
+    setSlug(unwrappedParams?.slug || "10-tips-hosting-tech-conference");
+  }, [unwrappedParams]);
 
   React.useEffect(() => {
     const loadBlog = async () => {

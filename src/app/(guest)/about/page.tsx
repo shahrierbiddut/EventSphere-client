@@ -102,7 +102,7 @@ export default function AboutPage() {
           <p className="text-xl text-muted-foreground mb-10">Whether you're looking to attend your next favorite event or host one yourself, we're here to help.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button size="lg" className="rounded-full px-8">Create an Account</Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8 border-gray-600 text-white hover:bg-card hover:text-black">
+            <Button size="lg" variant="outline" className="rounded-full px-8 border-gray-600 bg-transparent text-white hover:bg-white/10 hover:text-white">
               Explore Events
             </Button>
           </div>
